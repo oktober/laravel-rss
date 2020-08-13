@@ -13,8 +13,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
+/*Route::get('/', function () {
     return view('home', [
     	'rss_feed' => simplexml_load_file("https://staciefarmer.com/feed")
     ]);
-});
+});*/
+
+Route::get('/', 'HomeController@listRecentEntries');
+
+Route::get('/feeds', 'FeedsController@show');
+Route::get('/entries', 'EntriesController@show');

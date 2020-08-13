@@ -23,27 +23,61 @@
     Use this section to pull in feed and show
 -->
     <section id="three" class="wrapper">
+        
         <div class="inner">
             <h1>Blog Feed</h1>
-            <h2>{{ $rss_feed->title }}</h2>
+        </div>
+        @foreach ($feeds as $feed)
+        <div class="inner">
+            <h2><a href="{{ $feed->site_url }}" target="_blank">{{ $feed->site_title }}</a></h2>
         </div>
         <div class="inner flex flex-3">
-            <?php $i=0; ?>
-            @foreach ($rss_feed->entry as $entry)
+            @foreach ($feed->entries as $entry)
                 <div class="flex-item box">
                     <div class="content">
-                        <h3><a href="{{ $entry->id }}" target="_blank">{{ $entry->title }}</a></h3>
-                        <!-- TODO: Reduce summary to only a certain size -->
-                        <p>{{ $entry->summary }}</p>
+                        <h3><a href="{{ $entry->entry_url }}" target="_blank">{{ $entry->entry_title }}</a></h3>
+                        <p>{{ $entry->entry_teaser }}</p>
                     </div>
                 </div>
-            <?php
-                $i++;
-                if ($i>=3) break;
-            ?>
             @endforeach
         </div>
+        @endforeach
     </section>
+
+<!-- Original HTML for this section - remove when done setting up home page -->
+    <section id="three" class="wrapper">
+        <div class="inner flex flex-3">
+            <div class="flex-item box">
+                <div class="image fit">
+                    <img src="images/pic02.jpg" alt="" />
+                </div>
+                <div class="content">
+                    <h3>Consequat</h3>
+                    <p>Placerat ornare. Pellentesque od sed euismod in, pharetra ltricies edarcu cas consequat.</p>
+                </div>
+            </div>
+            <div class="flex-item box">
+                <div class="image fit">
+                    <img src="images/pic03.jpg" alt="" />
+                </div>
+                <div class="content">
+                    <h3>Adipiscing</h3>
+                    <p>Morbi in sem quis dui placerat Pellentesque odio nisi, euismod pharetra lorem ipsum.</p>
+                </div>
+            </div>
+            <div class="flex-item box">
+                <div class="image fit">
+                    <img src="images/pic04.jpg" alt="" />
+                </div>
+                <div class="content">
+                    <h3>Malesuada</h3>
+                    <p>Nam dui mi, tincidunt quis, accu an porttitor, facilisis luctus que metus vulputate sem magna.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
 
 
 <!-- Footer -->
